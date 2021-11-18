@@ -25,7 +25,7 @@ class Api {
       method: 'GET',
       headers: this._headers
     })
-    .then(res => this._handleRequest(res));
+    .then(this._handleRequest);
   }
 
   /* запрос на изменение информации о пользователе */
@@ -35,7 +35,7 @@ class Api {
       headers: this._headers,
       body: JSON.stringify(data)
     })
-    .then(res => this._handleRequest(res));
+    .then(this._handleRequest);
   }
 
   /* запрос на изменение аватара пользователя */
@@ -45,7 +45,7 @@ class Api {
       headers: this._headers,
       body: JSON.stringify(data)
     })
-    .then(res => this._handleRequest(res));
+    .then(this._handleRequest);
   }
 
   /* запрос на получение массива карточек */
@@ -54,7 +54,7 @@ class Api {
       method: 'GET',
       headers: this._headers
     })
-    .then(res => this._handleRequest(res));
+    .then(this._handleRequest);
   }
 
   /* запрос на добавление карточки */
@@ -64,7 +64,7 @@ class Api {
       headers: this._headers,
       body: JSON.stringify(data)
     })
-    .then(res => this._handleRequest(res));
+    .then(this._handleRequest);
   }
 
   /* запрос на удаление карточки */
@@ -73,7 +73,7 @@ class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => this._handleRequest(res));
+    .then(this._handleRequest);
   }
 
   /* запрос на добавление лайка карточки */
@@ -82,7 +82,7 @@ class Api {
       method: 'PUT',
       headers: this._headers
     })
-    .then(res => this._handleRequest(res));
+    .then(this._handleRequest);
   }
 
   /* запрос на добавление лайка карточки */
@@ -91,7 +91,7 @@ class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => this._handleRequest(res));
+    .then(this._handleRequest);
   }
 }
 

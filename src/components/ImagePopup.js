@@ -15,11 +15,11 @@ function ImagePopup(props) {
         <figure className="illustration__illustration page__reset-alignment">
           <img
             className="illustration__image"
-            src={props.card ? props.card.link : ''}
-            alt={props.card ? props.card.name : ''}
+            src={props?.card?.link || ''}
+            alt={props?.card?.name || ''}
           />
           <figcaption className="illustration__caption">
-            {props.card ? props.card.name : ''}
+            {props?.card?.name || ''}
           </figcaption>
         </figure>
       </div>

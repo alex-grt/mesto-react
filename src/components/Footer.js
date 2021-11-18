@@ -1,10 +1,10 @@
 function Footer() {
-  const year = new Date();
+  const year = new Date().getFullYear();
 
   return (
     <footer className="footer page__footer">
       <p className="footer__copyright" lang="en">
-        &copy; {year.getFullYear()} Mesto Russia
+        &copy; {year} Mesto Russia
       </p>
     </footer>
   );

@@ -1,9 +1,16 @@
 function PopupWithForm(props) {
+  function handlePopupClose(evt) {
+    if (evt.target.classList.contains('popup_opened')) {
+      props.onClose();
+    }
+  }
+
   return (
     <div
       className={`popup popup_background_medium${
         props.isOpen ? ' popup_opened' : ''
       }`}
+      onClick={handlePopupClose}
     >
       <div className="form">
         <button
@@ -17,12 +24,16 @@ function PopupWithForm(props) {
           className={`form__${props.name} form-area`}
           name={props.name}
           noValidate
+          onSubmit={props.onSubmit}
         >
           {props.children}
           <button
-            className="form__button-submit"
+            className={`form__button-submit${
+              props.buttonState ? '' : ' form__button-submit_inactive'
+            }`}
             type="submit"
             aria-label={`кнопка ${props.buttonTitle}`}
+            disabled={!props.buttonState}
           >
             {props.buttonTitle}
           </button>

@@ -1,9 +1,16 @@
 function ImagePopup(props) {
+  function handlePopupClose(evt) {
+    if (evt.target.classList.contains('popup_opened')) {
+      props.onClose();
+    }
+  }
+
   return (
     <div
       className={`popup popup_background_deep${
-        props.card ? " popup_opened" : ''
+        props.card ? ' popup_opened' : ''
       }`}
+      onClick={handlePopupClose}
     >
       <div className="illustration">
         <button

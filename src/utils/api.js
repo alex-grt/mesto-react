@@ -76,22 +76,21 @@ class Api {
     .then(this._handleRequest);
   }
 
-  /* запрос на добавление лайка карточки */
-  setLike(id) {
-    return fetch(`${this._baseUrl}cards/likes/${id}`, {
-      method: 'PUT',
-      headers: this._headers
-    })
-    .then(this._handleRequest);
-  }
-
-  /* запрос на добавление лайка карточки */
-  removeLike(id) {
-    return fetch(`${this._baseUrl}cards/likes/${id}`, {
-      method: 'DELETE',
-      headers: this._headers
-    })
-    .then(this._handleRequest);
+  /* запросы переключения лайка карточки */
+  toggleLike(id, isLiked) {
+    if (isLiked) {
+      return fetch(`${this._baseUrl}cards/likes/${id}`, {
+        method: 'PUT',
+        headers: this._headers
+      })
+      .then(this._handleRequest);
+    } else {
+      return fetch(`${this._baseUrl}cards/likes/${id}`, {
+        method: 'DELETE',
+        headers: this._headers
+      })
+      .then(this._handleRequest);
+    }
   }
 }
 

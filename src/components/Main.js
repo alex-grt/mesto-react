@@ -1,23 +1,9 @@
 import React from 'react';
-import api from '../utils/api';
 import Card from './Card';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main(props) {
-  const [userAvatar, setUserAvatar] = React.useState('');
-  const [userName, setUserName] = React.useState('');
-  const [userDescription, setUserDescription] = React.useState('');
-  const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    api.getPageInfo()
-      .then(([ user, cards ]) => {
-        setUserAvatar(user.avatar);
-        setUserName(user.name);
-        setUserDescription(user.about);
-        setCards(cards);
-      })
-      .catch((err) => alert(`Упс. Не удалось получить информацию. Ошибка: ${err}`));
-  }, []);
+  const currentUser = React.useContext(CurrentUserContext);
 
   return (
     <main className="content page__content">
@@ -30,14 +16,14 @@ function Main(props) {
           >
             <img
               className="profile-card__avatar"
-              src={userAvatar}
+              src={currentUser.avatar}
               alt="аватар пользователя"
             />
             <div className="profile-card__avatar-edit"></div>
           </div>
           <div className="profile-card__info">
             <div className="profile-card__title-cover">
-              <h1 className="profile-card__title">{userName}</h1>
+              <h1 className="profile-card__title">{currentUser.name}</h1>
               <button
                 className="button-open profile-card__button-edit"
                 type="button"
@@ -45,7 +31,7 @@ function Main(props) {
                 onClick={props.onEditProfile}
               ></button>
             </div>
-            <p className="profile-card__text">{userDescription}</p>
+            <p className="profile-card__text">{currentUser.about}</p>
           </div>
         </div>
         <button
@@ -58,8 +44,13 @@ function Main(props) {
       {/* <!-- секция Places --> */}
       <section className="places content__places" aria-label="Куда поехать?">
         <ul className="places-grid undecorated-list page__reset-alignment">
-          {cards.map((card) => (
-            <Card card={card} key={card._id} onCardClick={props.onCardClick} />
+          {props.cards.map((card) => (
+            <Card
+              card={card}
+              key={card._id}
+              onCardClick={props.onCardClick}
+              onCardDelete={props.onCardDelete}
+              onCardLike={props.onCardLike} />
           ))}
         </ul>
       </section>

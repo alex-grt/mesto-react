@@ -36,6 +36,7 @@
 /* блок place */
 @import url('./blocks/place/place.css');
 @import url('./blocks/place/__button-delete/place__button-delete.css');
+@import url('./blocks/place/__button-delete/_hidden/place__button-delete_hidden.css');
 @import url('./blocks/place/__image-cover/place__image-cover.css');
 @import url('./blocks/place/__image/place__image.css');
 @import url('./blocks/place/__caption/place__caption.css');

@@ -25,4 +25,4 @@
 Запускаем собранный проект:  
 `serve -s build` - в браузере откроется страница с проектом, либо можно открыть самостоятельно по адресу http://localhost:3000/  
 ***
-[Ссылка на страницу проекта](https://alex-grt.github.io/mesto-react/index.html)
+[Ссылка на страницу проекта](https://alex-grt.github.io/mesto-react/)

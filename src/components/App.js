@@ -35,6 +35,32 @@ function App() {
       .catch(err => alert(`Не удалось получить информацию. Ошибка: ${err}`));
   }, []);
 
+  React.useEffect(() => {
+    if (
+      isEditAvatarPopupOpen ||
+      isEditProfilePopupOpen ||
+      isAddPlacePopupOpen ||
+      isConfirmationPopupOpen ||
+      selectedCard
+      ) {
+        const handleEscPress = (evt) => {
+          if (evt.key === 'Escape') {
+            closeAllPopups();
+          }
+        }
+
+        document.addEventListener('keydown', handleEscPress);
+
+        return () => document.removeEventListener('keydown', handleEscPress);
+      }
+  }, [
+    isEditAvatarPopupOpen,
+    isEditProfilePopupOpen,
+    isAddPlacePopupOpen,
+    isConfirmationPopupOpen,
+    selectedCard
+  ]);
+
   function handleUpdateAvatar(avatar) {
     setButtonTitle({
       ...buttonTitle,
